@@ -14,14 +14,22 @@
 
 <body>
 
-<nav>
-    <h2>Impulsa<span>Pro</span></h2>
-    <ul>
+<!-- NAVBAR -->
+<nav class="navbar">
+
+    <div class="logo">Impulsa Pro</div>
+
+    <div class="menu-toggle" id="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <ul class="nav-links" id="nav-links">
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#proyectos">Proyectos</a></li>
         <li><a href="#contacto">Contacto</a></li>
     </ul>
+
 </nav>
 
 <!-- HERO -->
@@ -96,9 +104,16 @@ target="_blank">
 </a>
 
 <script>
-let currentSlide = 0;
-const slides = document.querySelectorAll(".slide");
-const dots = document.querySelectorAll(".dot");
+
+/* MENU HAMBURGUESA */
+const toggle = document.getElementById("menu-toggle");
+const nav = document.getElementById("nav-links");
+
+toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+});
+
+/* SCROLL ANIMACIÓN */
 const sections = document.querySelectorAll(".section");
 
 window.addEventListener("scroll", () => {
@@ -109,6 +124,11 @@ window.addEventListener("scroll", () => {
         }
     });
 });
+
+/* CARRUSEL */
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
 
 function showSlide(index){
     slides.forEach(slide => slide.classList.remove("active"));
@@ -133,6 +153,7 @@ function goToSlide(index){
 }
 
 setInterval(nextSlide, 6000);
+
 </script>
 
 </body>
