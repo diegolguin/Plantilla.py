@@ -326,3 +326,7 @@ html {
 #contacto{
     background:#030e29;
 }
+footer{
+    background:#030e29;
+    border-top:1px solid rgba(34,211,238,0.3);
+}
