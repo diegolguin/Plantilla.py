@@ -18,7 +18,7 @@ nav{
     z-index:1000;
     background:rgba(15,23,42,0.6);
     backdrop-filter: blur(10px);
-    border-bottom:1px solid rgba(255,255,255,0.05);
+    border-bottom:1px solid rgba(255,255,255,0);
 }
 
 
@@ -56,7 +56,23 @@ nav ul li a:hover{
     color: white;
     overflow: hidden;
 }
+.hero::after{
+    content: "";
+    position: absolute;
+    bottom: -60px;   /* baja la franja hacia el carrusel */
+    left: 0;
+    width: 100%;
+    height: 120px;   /* grosor de la transición */
+    
+    backdrop-filter: blur(15px);
+    background: linear-gradient(
+    to bottom,
+    rgba(15,23,42,0.3),
+    rgba(15,23,42,0.9)
+);
 
+    z-index: 3;
+}
 body{
     margin:0;
     background:#0f172a;
@@ -107,28 +123,16 @@ body{
 
 .slide{
     position:absolute;
-    width:100%;
-    height:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:2rem;
-    font-weight:600;
+    inset:0;
     opacity:0;
-    transition:opacity 1s ease-in-out;
-    text-align:center;
-    padding:0 20px;
+    visibility:hidden;
+    transition: opacity 0.6s ease;
 }
-
-.slide:nth-child(1){ background:#0f172a; }
-.slide:nth-child(2){ background:#111827; }
-.slide:nth-child(3){ background:#1e293b; }
-
 
 .slide.active{
     opacity:1;
+    visibility:visible;
 }
-
 .controls{
     position:absolute;
     width:100%;
@@ -208,7 +212,7 @@ footer{
     background:#0f172a;
     text-align:center;
     padding:30px;
-    border-top:1px solid #1e293b;
+    border-top: 1px solid #1e293b;
     margin-top:50px;
 }
 
@@ -266,9 +270,14 @@ footer span{
     display:flex;
     align-items:center;
     justify-content:center;
-    background: transparent;
-    margin-top: -80px;
     overflow:hidden;
+    z-index: 1;
+
+    background-image: url("carrusel.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
 }
 html {
     scroll-behavior: smooth;
@@ -281,4 +290,34 @@ html {
     font-weight:600;
     letter-spacing:-1px;
     line-height:1.1;
+}
+.slide{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:2rem;
+    font-weight:600;
+    opacity:0;
+    transition:opacity 1s ease-in-out;
+    text-align:center;
+    padding:0 20px;
+
+    /* 👇 FONDO AQUÍ */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.slide.active{
+    opacity:10;
+    visibility:visible;
+}
+.hero{
+    position:relative;
+    z-index:2;
+    border-bottom: 1px solid #1e293b;
 }
