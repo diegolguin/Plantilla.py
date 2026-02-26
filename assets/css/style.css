@@ -153,27 +153,31 @@ body{
     background-position:center;
 }
 
-.slide{
-    position:absolute;
+.carousel-container{
+    position:relative;
     width:100%;
     height:100%;
+}
+
+.slide{
+    position:absolute;
+    inset:0;
     display:flex;
     align-items:center;
     justify-content:center;
     font-size:2rem;
     font-weight:600;
-    opacity:0;
-    transition:opacity 0.3s ease;
     text-align:center;
     padding:0 20px;
-    background-size:cover;
-    background-position:center;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity 0.4s ease;
 }
 
 .slide.active{
     opacity:1;
+    visibility:visible;
 }
-
 .controls{
     position:absolute;
     width:100%;
